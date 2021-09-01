@@ -48,6 +48,13 @@ bye_fb_x86: bye.bas
 bye_fb_x64: bye.bas
 	fbc -target win64 bye.bas -o bye_x64.exe
 
+bye_scala: Bye.scala
+	scalac Bye.scala
+	scala Bye
+
+bye_dart: bye.dart
+	dart compile exe bye.dart -o bye_dart.exe
+
 clean:
 	del *.lib
 	del *.o
@@ -57,3 +64,4 @@ clean:
 	del *.ppu
 	del *.exe
 	del *.a
+	del *.class
