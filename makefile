@@ -30,11 +30,14 @@ msvcrt_x86.lib: msvcrt.def
 msvcrt_x64.lib: msvcrt.def
 	lib /MACHINE:x64 /def:msvcrt.def /out:msvcrt_x64.lib
 
-bye_nim_x86:
+bye_nim_x86: bye.nim
 	nim -d:release --cpu:i386 --passc:-m32 --passl:-m32 --out:bye_nim_x86 c bye.nim
 
-bye_nim_x64:
+bye_nim_x64: bye.nim
 	nim -d:release --cpu:amd64 --passc:-m64 --passl:-m64 --out:bye_nim_x64 c bye.nim
+
+bye_rust:
+	rustc -o bye_rust bye.rs
 
 clean:
 	del *.lib
