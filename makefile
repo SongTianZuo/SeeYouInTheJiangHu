@@ -1,7 +1,7 @@
 main:
 	
 puts_fpc_x86: puts.pas msvcrt_x86.lib
-	fpc puts.pas
+	fpc -Twin32 -Pi386 puts.pas
 	ld -mi386pe -ePUTS_$$$$_MAIN puts.o msvcrt_x86.lib -o puts_fpc_x86.exe
 
 puts_fpc_x64: puts.pas msvcrt_x64.lib
@@ -54,6 +54,37 @@ bye_scala: Bye.scala
 
 bye_dart: bye.dart
 	dart compile exe bye.dart -o bye_dart.exe
+
+bye_cs: bye.cs
+	csc Bye.cs /out:Bye_cs.exe
+
+bye_fpc_x86: bye.pas
+	fpc -Twin32 -Pi386 -obye_fpc_x86.exe bye.pas
+
+bye_fpc_x64: bye.pas
+	fpc -Twin64 -Px86_64 -obye_fpc_x64.exe bye.pas
+
+bye_cl_c: bye.c
+	cl /Fe:bye_cl_c.exe bye.c
+
+bye_cl_cpp: bye.cpp
+	cl /Fe:bye_cl_cpp.exe bye.cpp
+
+bye_gcc_x86: bye.c
+	gcc -m32 bye.c -o bye_gcc_x86
+
+bye_gcc_x64: bye.c
+	gcc -m64 bye.c -o bye_gcc_x64
+
+bye_g++_x86: bye.cpp
+	g++ -m32 bye.c -o bye_g++_x86
+
+bye_g++_x64: bye.cpp
+	g++ -m64 bye.c -o bye_g++_x64
+
+bye_java: bye.java
+	javac -encoding utf-8 Bye.java
+	java -Dencoding=utf-8 Bye
 
 clean:
 	del *.lib
