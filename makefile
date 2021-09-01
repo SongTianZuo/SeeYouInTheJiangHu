@@ -42,6 +42,12 @@ bye_rust: bye.rs
 bye_go: bye.go
 	go build -o bye_go.exe bye.go
 
+bye_fb_x86: bye.bas
+	fbc -target win32 bye.bas -o bye_x86.exe 
+
+bye_fb_x64: bye.bas
+	fbc -target win64 bye.bas -o bye_x64.exe
+
 clean:
 	del *.lib
 	del *.o
