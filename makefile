@@ -36,8 +36,11 @@ bye_nim_x86: bye.nim
 bye_nim_x64: bye.nim
 	nim -d:release --cpu:amd64 --passc:-m64 --passl:-m64 --out:bye_nim_x64 c bye.nim
 
-bye_rust:
+bye_rust: bye.rs
 	rustc -o bye_rust bye.rs
+
+bye_go: bye.go
+	go build -o bye_go.exe bye.go
 
 clean:
 	del *.lib
